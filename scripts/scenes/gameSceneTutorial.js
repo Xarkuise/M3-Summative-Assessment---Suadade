@@ -2,11 +2,7 @@ export default class gameSceneTutorial extends Phaser.Scene {
     constructor() {
         super("gameSceneTutorial");
     }
-    preload() {    
-        this.load.image('tiles', './assets/Tutorial/Tileset1.png');
-        this.load.tilemapTiledJSON('map', './assets/Tutorial/TutorialMap.Json');  
-        this.load.spritesheet('player', './assets/Spritesheet/run.png', {  frameWidth: 16, frameHeight: 16});  
-        // this.load.bitmapFont('font', './assets/fonts/thick_8x8.png', '../assets/fonts/thick_8x8.xml');     
+    preload() {           
     }
 
     create() {

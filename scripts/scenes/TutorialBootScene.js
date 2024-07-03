@@ -3,8 +3,7 @@ export default class TutorialBootScene extends Phaser.Scene {
         super('TutorialBootScene');
     }
 
-    preload() {
-        this.load.image('Sigil', '../assets/Image/logo/Sigil.png');
+    preload() {     
     }
 
     create() {
