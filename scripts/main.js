@@ -1,6 +1,6 @@
 import StudioBootScene from './scenes/StudioBootScene.js';
 import BootScene from './scenes/BootScene.js';
-// import MainMenuScene from './scenes/MainMenuScene.js';
+import MainMenuScene from './scenes/MainMenuScene.js';
 import TutorialBootScene from './scenes/TutorialBootScene.js';
 import LevelOneBootScene from './scenes/LevelOneBootScene.js';
 import LevelTwoBootScene from './scenes/LevelTwoBootScene.js';
@@ -12,8 +12,8 @@ import LevelTwoBootScene from './scenes/LevelTwoBootScene.js';
 
 var config = {
     type: Phaser.AUTO,
-    width: 1080,
-    height: 600,
+    width: 1580,
+    height: 900,
     physics: {
         default: 'arcade',
         arcade: {
@@ -23,9 +23,7 @@ var config = {
     },
     pixelArt: true,
 
-    scene: [StudioBootScene,BootScene, TutorialBootScene, LevelOneBootScene, LevelTwoBootScene]
-
-    // scene: [, MainMenuScene, TutoriaBootScene, GameSceneTutorial, winningScene, GameOverScene]
+    scene: [ StudioBootScene,BootScene, MainMenuScene,  TutorialBootScene, LevelOneBootScene, LevelTwoBootScene]
     
 };
 

@@ -19,8 +19,7 @@ export default class BootScene extends Phaser.Scene {
         const startText = this.add.bitmapText(centerX, centerY + -10, 'font', 'Click to Start', 50).setOrigin(0.5, 0.5);
 
         this.input.once('pointerdown', () => {
-            this.scene.start('TutorialBootScene');
-            // this.scene.start('MainMenuScene');
+            this.scene.start('MainMenuScene');
         });
     });
     }
