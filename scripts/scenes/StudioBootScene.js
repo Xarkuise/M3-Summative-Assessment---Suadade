@@ -11,21 +11,23 @@ export default class StudioBootScene extends Phaser.Scene {
         this.load.image('quitButton', './assets/Image/Buttons/quitButton.png');
 
         //TileSets
-        this.load.image('tiles', './assets/TileMaps/Tutorial/Tileset1.png');
-        this.load.image('tiles', './assets/TileMaps//Level1/Tileset2.png');
-        this.load.image('tiles', './assets/TileMaps//Level2/Tileset3.png');
+        this.load.image('tiles1', './assets/TileMaps/Tutorial/Tileset1.png');
+        this.load.image('tiles2', './assets/TileMaps/Level1/Tileset2.png');
+        this.load.image('tiles3', './assets/TileMaps/Level2/Tileset3.png');
 
         //TileMaps
-        this.load.tilemapTiledJSON('map', './assets/TileMaps/Tutorial/TutorialMap.json');
-        this.load.tilemapTiledJSON('map', './assets/TileMaps/Level1/Level1Map.json'); 
-        this.load.tilemapTiledJSON('map', './assets/TileMaps/Level2/Tutorial/Level2Map.json');   
+        this.load.tilemapTiledJSON('Tutorial', './assets/TileMaps/Tutorial/TutorialMap.json');
+        this.load.tilemapTiledJSON('Level1', './assets/TileMaps/Level1/Level1Map.json'); 
+        this.load.tilemapTiledJSON('Level2', './assets/TileMaps/Level2/Level2Map.json');   
         // this.load.spritesheet('player', './assets/Spritesheet/run.png', {  frameWidth: 16, frameHeight: 16}); 
 
+
         //load spritesheet
-        // this.load.spritesheet('player', './assets/images/spritesheet/player.png', {  frameWidth: 31.5, frameHeight: 32});
+        this.load.spritesheet('player', './assets/Spritesheets/character.png', {  frameWidth: 16, frameHeight: 32});
         // this.load.spritesheet('coin', './assets/images/spritesheet/coin.png', {  frameWidth: 16, frameHeight: 16});
         // this.load.spritesheet('chest', './assets/images/spritesheet/chest.gif', {  frameWidth: 42, frameHeight: 32});
-               
+          
+        
         //   // Load audio
         //   this.load.audio('backgroundMusic', './assets/audio/BGMusic/MainMenuBGM.mp3');
         //   this.load.audio('CrystalBGM', './assets/audio/BGMusic/Crystal-BGM.mp3');
@@ -78,8 +80,9 @@ export default class StudioBootScene extends Phaser.Scene {
     });
     
         // Next scene
-        this.time.delayedCall(7000, () => {
-            this.scene.start('BootScene');
+        this.time.delayedCall(1000, () => {
+            this.scene.start('gameSceneLevel1');
+            // this.scene.start('BootScene');
         });
     }
 }

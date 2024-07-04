@@ -34,7 +34,7 @@ export default class MainMenuScene extends Phaser.Scene {
         // });
     
         // Add Start button
-        const startButton = this.add.image(this.cameras.main.width / 8, 490, 'startButton') // Start off-screen to the left
+        const startButton = this.add.image(this.cameras.main.width / 1.2, 490, 'startButton') // Start off-screen to the left
         startButton.setOrigin(0.5);
         startButton.setInteractive();
         startButton.setScale(0.4);
@@ -45,7 +45,7 @@ export default class MainMenuScene extends Phaser.Scene {
         });
  
         // Add Credit button
-        const creditButton = this.add.image(this.cameras.main.width / 8, 640, 'creditButton'); // Start off-screen to the right
+        const creditButton = this.add.image(this.cameras.main.width / 1.2, 640, 'creditButton'); // Start off-screen to the right
         creditButton.setOrigin(0.5);
         creditButton.setInteractive();
         creditButton.setScale(0.4);
@@ -58,7 +58,7 @@ export default class MainMenuScene extends Phaser.Scene {
         });
     
         // Add Quit button
-        const quitButton = this.add.image(this.cameras.main.width / 8, 790, 'quitButton'); // Start off-screen at the bottom
+        const quitButton = this.add.image(this.cameras.main.width / 1.2, 790, 'quitButton'); // Start off-screen at the bottom
         quitButton.setOrigin(0.5);
         quitButton.setInteractive();
         quitButton.setScale(0.4);

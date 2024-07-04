@@ -27,7 +27,7 @@ export default class TutorialBootScene extends Phaser.Scene {
 
         //Next scene
         this.time.delayedCall(5000, () => {
-            this.scene.start('LevelOneBootScene');
+            this.scene.start('gameSceneTutorial');
         });
     }
 }
