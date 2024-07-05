@@ -6,9 +6,16 @@ export default class StudioBootScene extends Phaser.Scene {
     preload() {
         // Load assets like background images, buttons, etc.
         this.load.image('background', './assets/Image/Background/mainMenuBG.png');
+        this.load.image('gSBackground', 'assets/Image/Background/winbg.png');
+        this.load.image('creditBackground', './assets/Image/Background/credits1.png');
+        this.load.image('GOBackground', './assets/Image/Background/loseBg.png');
+
         this.load.image('startButton', './assets/Image/Buttons/startButton.png');
         this.load.image('creditButton', './assets/Image/Buttons/creditsButton.png');
         this.load.image('quitButton', './assets/Image/Buttons/quitButton.png');
+        this.load.image('backButton', './assets/Image/Buttons/arrowLeftBtn.png');
+        this.load.image('restartButton', './assets/Image/Buttons/retryIcon.png');
+        this.load.image('mainButton', './assets/Image/Buttons/mainMenuIcon.png');
 
         //TileSets
         this.load.image('tiles1', './assets/TileMaps/Tutorial/Tileset1.png');
@@ -24,6 +31,8 @@ export default class StudioBootScene extends Phaser.Scene {
 
         //load spritesheet
         this.load.spritesheet('player', './assets/Spritesheets/character.png', {  frameWidth: 16, frameHeight: 32});
+        this.load.image('eKey', './assets/Image/Background/E.png');
+        this.load.image('ghost', './assets/Spritesheets/Enemy/ghost.png');
         // this.load.spritesheet('coin', './assets/images/spritesheet/coin.png', {  frameWidth: 16, frameHeight: 16});
         // this.load.spritesheet('chest', './assets/images/spritesheet/chest.gif', {  frameWidth: 42, frameHeight: 32});
           
@@ -81,7 +90,7 @@ export default class StudioBootScene extends Phaser.Scene {
     
         // Next scene
         this.time.delayedCall(7000, () => { //7000
-             this.scene.start('BootScene');
+            this.scene.start('BootScene');
         });
     }
 }

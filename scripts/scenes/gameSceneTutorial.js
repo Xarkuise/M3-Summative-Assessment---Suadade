@@ -1282,8 +1282,14 @@ export default class gameSceneTutorial extends Phaser.Scene {
         this.player = this.physics.add.sprite(300, 150, 'player');
         this.player.setScale(.76);
 
+         // Ghost and enable physics
+         this.ghost = this.physics.add.sprite(500, 150, 'ghost'); 
+         this.ghost.setScale(.76);
+         this.ghost.setCollideWorldBounds(true);  
+
         // Movement Keys
         this.cursors = this.input.keyboard.createCursorKeys();
+        this.eKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
         // Calculate scale ratio to fit the scene size
         const mapWidth = map.widthInPixels;
@@ -1340,45 +1346,65 @@ export default class gameSceneTutorial extends Phaser.Scene {
         this.physics.add.collider(this.player, this.doorClose);
         this.physics.add.collider(this.player, this.barClosed);
         this.physics.add.collider(this.player, this.trapsOn, this.resetPlayerPosition, null, this);
-        this.physics.add.collider(this.player, this.leverUnpulled, this.pullLever, null, this);
-        this.physics.add.collider(this.player, this.tome, this.getTome, null, this);
-        this.physics.add.collider(this.player, this.key, this.getKey, null, this);
+        this.physics.add.collider(this.player, this.leverUnpulled, this.showInteractionImage, null, this);
+        this.physics.add.collider(this.player, this.tome, this.showInteractionImage, null, this);
+        this.physics.add.collider(this.player, this.key, this.showInteractionImage, null, this);
         this.physics.add.collider(this.player, doorOpen, this.endOfTutorial, null, this);
+        this.physics.add.collider(this.player, this.ghost, this.resetPlayerPosition, null, this);
+
+        // Create interaction image and hide it initially
+        this.interactionImage = this.add.image(0, 0, 'eKey').setVisible(false).setDepth(1);
+        this.interactionType = null;
     }
 
     resetPlayerPosition(player, tile) {
         this.player.setPosition(300, 150);
     }
 
-    pullLever(player, tile) {
+    showInteractionImage(player, tile) {
+        this.interactionImage.setPosition(this.player.x, this.player.y - 50);
+        this.interactionImage.setVisible(true);
+
+        if (tile.layer.name === 'Lever-Unpulled') {
+            this.interactionType = 'lever';
+        } else if (tile.layer.name === 'Tome') {
+            this.interactionType = 'tome';
+        } else if (tile.layer.name === 'Key') {
+            this.interactionType = 'key';
+        }
+    }
+
+    pullLever() {
         this.leverUnpulled.setVisible(false);
         this.leverPulled.setVisible(true);
         this.trapsOn.setVisible(false);
         this.trapsOn.setCollisionByExclusion([]);
+        this.interactionImage.setVisible(false);
     }
 
-    getTome(player, tile) {
+    getTome() {
         this.tome.setVisible(false);
         this.barClosed.setVisible(false);
         this.barClosed.setCollisionByExclusion([]);
         this.tome.setCollisionByExclusion([]);
+        this.interactionImage.setVisible(false);
     }
 
-    getKey(player, tile) {
+    getKey() {
         this.doorClose.setVisible(false);
         this.key.setVisible(false);
         this.doorClose.setCollisionByExclusion([]);
         this.key.setCollisionByExclusion([]);
+        this.interactionImage.setVisible(false);
     }
 
-    endOfTutorial(player, tile){
+    endOfTutorial(player, tile) {
         this.scene.start('LevelOneBootScene');
     }
 
     update() {
-        const playerSpeed = 100;
+        const playerSpeed = 300;
 
-        // Reset player velocity
         this.player.setVelocity(0);
 
         // Horizontal movement
@@ -1403,5 +1429,19 @@ export default class gameSceneTutorial extends Phaser.Scene {
         if (!this.cursors.left.isDown && !this.cursors.right.isDown && !this.cursors.up.isDown && !this.cursors.down.isDown) {
             this.player.anims.stop();
         }
+
+        // Check for interaction key press
+        if (this.interactionImage.visible && Phaser.Input.Keyboard.JustDown(this.eKey)) {
+            if (this.interactionType === 'lever') {
+                this.pullLever();
+            } else if (this.interactionType === 'tome') {
+                this.getTome();
+            } else if (this.interactionType === 'key') {
+                this.getKey();
+            }
+        }
+
+        // Ghost follow Kore
+        this.physics.moveToObject(this.ghost, this.player, 20);
     }
 }

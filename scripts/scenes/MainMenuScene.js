@@ -4,11 +4,6 @@ export default class MainMenuScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('background', './assets/Image/Background/mainMenuBG.png');
-        this.load.image('startButton', './assets/Image/Buttons/startButton.png');
-        this.load.image('creditButton', './assets/Image/Buttons/creditsButton.png');
-        this.load.image('quitButton', './assets/Image/Buttons/quitButton.png');
-
     }
 
     create() {
@@ -50,11 +45,9 @@ export default class MainMenuScene extends Phaser.Scene {
         creditButton.setInteractive();
         creditButton.setScale(0.4);
         creditButton.on('pointerdown', () => {
-            if (!this.scene.isActive('creditScene')) {
-                this.scene.stop('titleScene');
+                // this.scene.stop('titleScene');
                 this.scene.start('creditScene');
                 // this.backgroundMusic.stop();
-            }
         });
     
         // Add Quit button

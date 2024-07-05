@@ -1,6 +1,6 @@
-export default class WinningScene extends Phaser.Scene {
+export default class GameOverScene extends Phaser.Scene {
     constructor() {
-        super("WinningScene");
+        super("GameOverScene");
     }
 
     // init(data){
@@ -14,12 +14,12 @@ export default class WinningScene extends Phaser.Scene {
 
     create() {
         // Display the background image
-        this.winningBackground = this.add.image(0, 0, 'gSBackground').setOrigin(0, 0);
+        this.winningBackground = this.add.image(0, 0, 'GOBackground').setOrigin(0, 0);
         this.winningBackground.setDisplaySize(this.cameras.main.width, this.cameras.main.height);
 
 
         // Add a restart button
-        const restartButton = this.add.image(this.cameras.main.width / 8, this.cameras.main.height + -300, 'restartButton');
+        const restartButton = this.add.image(this.cameras.main.width / 1.3, this.cameras.main.height + -400, 'restartButton');
         restartButton.setScale(0.3);
         restartButton.setOrigin(0.5);
         restartButton.setInteractive();
@@ -27,7 +27,7 @@ export default class WinningScene extends Phaser.Scene {
             this.scene.start('LevelOneBootScene');
         });
 
-        const mainButton = this.add.image(this.cameras.main.width / 3.5, this.cameras.main.height + -300, 'mainButton');
+        const mainButton = this.add.image(this.cameras.main.width / 1.7, this.cameras.main.height + -400, 'mainButton');
         mainButton.setScale(0.3);
         mainButton.setOrigin(0.5);
         mainButton.setInteractive();
