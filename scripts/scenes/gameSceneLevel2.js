@@ -131,6 +131,9 @@ export default class gameSceneLevel2 extends Phaser.Scene {
         this.Tome = mapTwo.createLayer('Tome', tilesetThree, 0, 0);
         const collisionLayer = mapTwo.createLayer('Collision', tilesetThree, 0, 0);
         const backgroundLayer = mapTwo.createLayer('Background', tilesetThree, 0, 0);
+        this.shieldProject = mapTwo.createLayer('Shield', tilesetThree, 0, 0);
+        this.Potion = mapTwo.createLayer('Potion', tilesetThree, 0, 0);
+        this.Damageup = mapTwo.createLayer('Damageup', tilesetThree, 0, 0);
         this.endLayer = mapTwo.createLayer('Final-Line', tilesetThree, 0, 0);
         this.barClosed = mapTwo.createLayer('Bar-Closed', tilesetThree, 0, 0);
 

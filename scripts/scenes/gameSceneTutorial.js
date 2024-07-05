@@ -1273,6 +1273,9 @@ export default class gameSceneTutorial extends Phaser.Scene {
         this.key = map.createLayer('Key', tileset, 0, 0);
         this.trapsOff = map.createLayer('Traps-Off', tileset, 0, 0);
         this.trapsOn = map.createLayer('Traps-On', tileset, 0, 0);
+        this.HP = map.createLayer('HP', tileset, 50, 0);
+        this.Shield = map.createLayer('Shield', tileset, 50, 0);
+        this.Dmg = map.createLayer('Dmg', tileset, 50, 0);
         const background = map.createLayer('Background', tileset, 0, 0);
 
         // Player sprite and enable physics
@@ -1319,7 +1322,7 @@ export default class gameSceneTutorial extends Phaser.Scene {
 
         // Camera follow the player
         this.cameras.main.startFollow(this.player);
-        this.cameras.main.setZoom(3.5); // set to 3.5
+        this.cameras.main.setZoom(2); // set to 3.5
 
         // Collision
         collision.setCollisionByExclusion([-1]);
