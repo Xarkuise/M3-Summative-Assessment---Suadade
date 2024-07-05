@@ -81,8 +81,7 @@ export default class StudioBootScene extends Phaser.Scene {
     
         // Next scene
         this.time.delayedCall(1000, () => {
-            this.scene.start('gameSceneLevel1');
-            // this.scene.start('BootScene');
+             this.scene.start('BootScene');
         });
     }
 }
