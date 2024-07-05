@@ -609,7 +609,7 @@ export default class gameSceneLevel1 extends Phaser.Scene {
  
          // camera follow 
          this.cameras.main.startFollow(this.player);
-         this.cameras.main.setZoom(1);
+         this.cameras.main.setZoom(2);
  
          // Collision
          collisionLayer.setCollisionByExclusion([-1]);
@@ -617,6 +617,8 @@ export default class gameSceneLevel1 extends Phaser.Scene {
          this.leverUnpulledLayer.setCollisionByExclusion([-1]);
          this.leverUnpulledOuterSpike.setCollisionByExclusion([-1]);
          this.leverUnpulledInnerSpike.setCollisionByExclusion([-1]);
+         this.trapOnOuter.setCollisionByExclusion([-1]);
+         this.trapOnInner.setCollisionByExclusion([-1]);
          this.fenceClosed.setCollisionByExclusion([-1]);
          this.Close.setCollisionByExclusion([-1]);   
          this.fakeKeyLayer.setCollisionByExclusion([-1]);
@@ -629,6 +631,8 @@ export default class gameSceneLevel1 extends Phaser.Scene {
          this.physics.add.collider(this.player, this.leverUnpulledLayer, this.showInteractionImage, null, this);
          this.physics.add.collider(this.player, this.leverUnpulledOuterSpike, this.showInteractionImage, null, this);
          this.physics.add.collider(this.player, this.leverUnpulledInnerSpike, this.showInteractionImage, null, this);
+         this.physics.add.collider(this.player, this.trapOnOuter, this.resetPlayerPosition, null, this);
+         this.physics.add.collider(this.player, this.trapOnInner, this.resetPlayerPosition, null, this);
          this.physics.add.collider(this.player, this.fenceClosed);
          this.physics.add.collider(this.player, this.Close);
          this.physics.add.collider(this.player, this.endLayer, this.transitionToNextLevel, null, this); 
@@ -672,6 +676,7 @@ export default class gameSceneLevel1 extends Phaser.Scene {
          this.leverUnpulledOuterSpike.setVisible(false);
          this.trapOnOuter.setVisible(false);
          this.interactionImage.setVisible(false);
+         this.trapOnOuter.setCollisionByExclusion([]); 
      }
  
      triggerInnerSpike() {
@@ -679,6 +684,7 @@ export default class gameSceneLevel1 extends Phaser.Scene {
          this.leverUnpulledInnerSpike.setVisible(false);
          this.trapOnInner.setVisible(false);
          this.interactionImage.setVisible(false);
+         this.trapOnInner.setCollisionByExclusion([]); 
      }
  
      disableClosedLayer(player, tile) {

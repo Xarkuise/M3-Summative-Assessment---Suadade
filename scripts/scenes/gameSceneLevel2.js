@@ -186,7 +186,7 @@ export default class gameSceneLevel2 extends Phaser.Scene {
 
         // Camera follow
         this.cameras.main.startFollow(this.player);
-        this.cameras.main.setZoom(1);
+        this.cameras.main.setZoom(2);
 
         // Collision
         collisionLayer.setCollisionByExclusion([-1]);
